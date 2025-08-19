@@ -14,6 +14,9 @@ export default function Main() {
     const [userGuesses, setUserGuesses] = useState([]);
 
     const gameState = calculateGameState(userGuesses, word, programmingLanguages.length - 1);
+    const numIncorrectGuesses = userGuesses.filter(x => x.occurences === 0).length;
+    const guessesRemaining = programmingLanguages.length - numIncorrectGuesses - 1;
+    const srCurrentWord = word.split("").map(char => userGuesses.some(g => g.char === char) ? char + "." : "blank.").join(" ")
 
     function keyPressed(char) {
         if (userGuesses.find(c => c.char === char)) {
@@ -45,6 +48,7 @@ export default function Main() {
             <Lives
                 programmingLanguages={programmingLanguages}
                 userGuesses={userGuesses}
+                numIncorrectGuesses={numIncorrectGuesses}
             />
             <Guesses
                 programmingLanguages={programmingLanguages}
@@ -52,6 +56,21 @@ export default function Main() {
                 userGuesses={userGuesses}
                 gameState={gameState}
             />
+
+            {/* Screen reader-only section */}
+            <section className="sr-only" aria-live="polite" role="status">
+                <p>
+                    {userGuesses.length > 0
+                        ? userGuesses[userGuesses.length - 1].occurences > 0
+                            ? `Correct! The letter ${userGuesses[userGuesses.length - 1].char} is in the word.`
+                            : `Sorry, the letter ${userGuesses[userGuesses.length - 1].char} is not in the word.`
+                        : null
+                    }
+                </p>
+                <p>{`Current word: ${srCurrentWord}`}</p>
+                {(gameState !== GameState.WON && gameState === GameState.LOST) && <p>`You have ${guessesRemaining} ${guessesRemaining > 1 ? "attempts" : "attempt"} remaining.`</p>}
+            </section>
+
             <Keyboard
                 programmingLanguages={programmingLanguages}
                 word={word}

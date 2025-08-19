@@ -26,7 +26,7 @@ export default function StatusBar(props) {
     }
 
     return (
-        <section className={getClassName()}>
+        <section className={getClassName()} aria-live="polite" role="status">
             {props.gameState === GameState.WON && <h2>You win!</h2>}
             {props.gameState === GameState.WON && <p>Well done! 🎉</p>}
 

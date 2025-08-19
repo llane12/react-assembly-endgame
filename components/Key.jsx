@@ -21,12 +21,16 @@ export default function Key(props) {
             guessed < 0 && "key-incorrect");
     }
 
-    function getDisabled() {
-        return props.gameState === GameState.WON || props.gameState === GameState.LOST;
-    }
+    const disabled = props.gameState === GameState.WON || props.gameState === GameState.LOST;
 
     return (
-        <button className={getClassName()} disabled={getDisabled()} onClick={() => props.keyPressed(props.char)}>
+        <button
+            className={getClassName()}
+            disabled={disabled}
+            aria-disabled={disabled || props.userGuesses.some(g => g.char === props.char)}
+            aria-label={`Letter ${props.char}`}
+            onClick={() => props.keyPressed(props.char)}
+        >
             {props.char}
         </button>
     );
