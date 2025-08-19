@@ -16,8 +16,8 @@ export default function Guesses(props) {
         const guessed = userGuessed(char);
         return clsx(
             "guess",
-            guessed && "guess-correct",
-            !guessed && props.gameState === GameState.LOST && "guess-no-lives-left");
+            guessed && "correct",
+            !guessed && props.gameState === GameState.LOST && "missed");
     }
 
     function getContent(char) {

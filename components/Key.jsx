@@ -17,8 +17,8 @@ export default function Key(props) {
         const guessed = userGuessed(props.char);
         return clsx(
             "key",
-            guessed > 0 && "key-correct",
-            guessed < 0 && "key-incorrect");
+            guessed > 0 && "correct",
+            guessed < 0 && "incorrect");
     }
 
     const disabled = props.gameState === GameState.WON || props.gameState === GameState.LOST;

@@ -112,11 +112,11 @@ main {
   font-size: 1.25rem;
 }
 
-.guess-correct {
+.guess.correct {
   color: #F9F4DA;
 }
 
-.guess-no-lives-left {
+.guess.missed {
   color: #EC5D49;
 }
 
@@ -141,12 +141,12 @@ main {
   background-color: #FCBA29;
 }
 
-.key-correct {
+.key.correct {
   background-color: #10A95B;
 }
 
-.key-incorrect {
-  background-color: #EB5D49;
+.key.incorrect {
+  background-color: #EC5D49;
 }
 
 .key:disabled {

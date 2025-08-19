@@ -90,7 +90,7 @@ export default function Main() {
                     New Game
                 </button>
             )}
-            {gameState === GameState.WON && <Confetti />}
+            {gameState === GameState.WON && <Confetti recycle={false} numberOfPieces={1000} />}
         </main>
     )
 }
