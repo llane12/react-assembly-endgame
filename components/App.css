@@ -1,0 +1,169 @@
+header {
+  text-align: center;
+  margin-top: 30px;
+}
+
+header>h1 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #F9F4DA;
+}
+
+header>p {
+  color: #8E8E8E;
+  font-size: 0.875rem;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-bar {
+  border-radius: 4px;
+  width: 100%;
+  max-width: 350px;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #F9F4DA;
+  margin-top: 30px;
+  padding-block: 5px;
+}
+
+.status-bar.won {
+  background-color: #10A95B;
+}
+
+.status-bar.lost {
+  background-color: #BA2A2A;
+}
+
+.status-bar.incorrect {
+  background-color: #7A5EA7;
+  border: 1px dashed #323232;
+}
+
+.status-bar>h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  text-align: center;
+}
+
+.status-bar>p {
+  margin: 0;
+  text-align: center;
+}
+
+.status-bar>.incorrect-guess-message {
+  font-style: italic;
+}
+
+.lives-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+  max-width: 400px;
+  margin-top: 25px;
+}
+
+.life-container {
+  position: relative;
+}
+
+.life {
+  border-radius: 3px;
+  padding: 5px 8px;
+}
+
+.dead {
+  opacity: 0.2;
+}
+
+.skull {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.guesses-container {
+  display: flex;
+  gap: 2px;
+  margin: 20px 0px;
+}
+
+.guess-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #323232;
+  border-bottom: 1px solid #AAA696;
+  width: 40px;
+  height: 40px;
+}
+
+.guess {
+  font-size: 1.25rem;
+}
+
+.guess-correct {
+  color: #F9F4DA;
+}
+
+.guess-no-lives-left {
+  color: #EC5D49;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  max-width: 450px;
+}
+
+.key {
+  border: 1px solid #D7D7D7;
+  border-radius: 3px;
+  width: 40px;
+  height: 40px;
+  color: #1E1E1E;
+  cursor: pointer;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  font-weight: 560;
+  background-color: #FCBA29;
+}
+
+.key-correct {
+  background-color: #10A95B;
+}
+
+.key-incorrect {
+  background-color: #EB5D49;
+}
+
+.key:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.new-game {
+  margin-top: 30px;
+  color: #1E1E1E;
+  background-color: #11B5E5;
+  border: 1px solid #C4C4C4;
+  border-radius: 3px;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  font-size: 0.9rem;
+  width: 170px;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
