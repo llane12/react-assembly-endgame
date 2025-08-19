@@ -1,3 +1,10 @@
+import { words } from "./words"
+
+export function getRandomWord() {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    return words[randomIndex].toUpperCase();
+}
+
 export function getObituaryText(language) {
     const options = [
         `Farewell, ${language}.`,

@@ -3,6 +3,7 @@ import Confetti from "react-confetti"
 
 import { GameState, calculateGameState } from "../internal/gameState"
 import { programmingLanguages } from "../internal/programmingLanguages"
+import { getRandomWord } from "../internal/utils"
 
 import StatusBar from "./StatusBar"
 import Lives from "./Lives";
@@ -10,9 +11,11 @@ import Guesses from "./Guesses"
 import Keyboard from "./Keyboard";
 
 export default function Main() {
-    const [word, setWord] = useState("REFACTOR");
+    // State
+    const [word, setWord] = useState(() => getRandomWord());
     const [userGuesses, setUserGuesses] = useState([]);
 
+    // Derived state
     const gameState = calculateGameState(userGuesses, word, programmingLanguages.length - 1);
     const numIncorrectGuesses = userGuesses.filter(x => x.occurences === 0).length;
     const guessesRemaining = programmingLanguages.length - numIncorrectGuesses - 1;
@@ -33,7 +36,11 @@ export default function Main() {
     }
 
     function newGame() {
-        setWord("TESTING");
+        let randomWord = getRandomWord();
+        while (randomWord === word) {
+            randomWord = getRandomWord();
+        }
+        setWord(randomWord);
         setUserGuesses([]);
     }
 
